@@ -1,10 +1,11 @@
 import express, {Express, Request, Response} from 'express'
 import { config } from './config'
+import { template } from './render/template'
 
 const app: Express = express()
 
 app.get('*', (req: Request, res: Response) => {
-    res.send(`<h1>Path: ${req.url}<h1>`)
+    res.send(template(`From ${req.url}`))
 })
 
 app.listen(config.PORT, () => {
