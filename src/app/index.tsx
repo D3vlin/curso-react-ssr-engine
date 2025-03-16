@@ -6,4 +6,13 @@ import './assets/favicon.ico'
 
 const container = document.getElementById('app');
 
-hydrateRoot(container, <BrowserRouter><App /></BrowserRouter>)
+declare global {
+    interface Window {
+      __INITIAL_PROPS__: {};
+    }
+}
+
+const initialProps = window.__INITIAL_PROPS__
+
+
+hydrateRoot(container, <BrowserRouter><App {...initialProps}/></BrowserRouter>)
